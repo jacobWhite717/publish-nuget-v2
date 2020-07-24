@@ -91,7 +91,7 @@ class Action {
 
         console.log(pushOutput)
         console.log('Current directory: ' + process.cwd());
-        console.log(process.pwd());
+        console.log('Dirname: ' + __dirname);
 
         if (/error/.test(pushOutput))
             this._printErrorAndExit(`${/error.*/.exec(pushOutput)[0]}`)
