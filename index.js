@@ -86,12 +86,12 @@ class Action {
         const packages = fs.readdirSync(".").filter(fn => fn.endsWith("nupkg"))
         console.log(`Generated Package(s): ${packages.join(", ")}`)
         
-        const pushCmd = `nuget push *.nupkg --source ${this.nugetSource} -k ${this.nugetKey} --skip-duplicate`,
+//         const pushCmd = `nuget push *.nupkg --source ${this.nugetSource} -k ${this.nugetKey} --skip-duplicate`,
+        const pushCmd = `nuget push ${packages[0]}.nupkg --source ${this.nugetSource} -k ${this.nugetKey} --skip-duplicate`,
             pushOutput = this._executeCommand(pushCmd, { encoding: "utf-8" }).stdout
 
         console.log(pushOutput)
         console.log('Current directory: ' + process.cwd());
-        console.log('Dirname: ' + __dirname);
 
         if (/error/.test(pushOutput))
             this._printErrorAndExit(`${/error.*/.exec(pushOutput)[0]}`)
