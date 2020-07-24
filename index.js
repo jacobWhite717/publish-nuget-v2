@@ -68,7 +68,7 @@ class Action {
             pushOutput = this._executeCommand(pushCmd, { encoding: "utf-8" }).stdout
 
         console.log(pushOutput)
-        console.log(window.location.pathname)
+        console.log('Current directory: ' + process.cwd());
 
         if (/error/.test(pushOutput))
             this._printErrorAndExit(`${/error.*/.exec(pushOutput)[0]}`)
