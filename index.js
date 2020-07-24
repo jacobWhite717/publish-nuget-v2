@@ -29,6 +29,13 @@ class Action {
         const INPUT = cmd.split(" "), TOOL = INPUT[0], ARGS = INPUT.slice(1)
         return spawnSync(TOOL, ARGS, options)
     }
+    
+    _executeCommandNoOps(cmd) {
+        console.log(`executing: [${cmd}]`)
+
+        const INPUT = cmd.split(" "), TOOL = INPUT[0], ARGS = INPUT.slice(1)
+        return spawnSync(TOOL, ARGS)
+    }
 
     _executeInProcess(cmd) {
         this._executeCommand(cmd, { encoding: "utf-8", stdio: [process.stdin, process.stdout, process.stderr] })
@@ -70,7 +77,8 @@ class Action {
         
 //         const pushCmd = `nuget push *.nupkg --source ${this.nugetSource} -k ${this.nugetKey} --skip-duplicate`,
         const pushCmd = `dotnet nuget push ${packageLoc} -s ${this.nugetSource} -k ${this.nugetKey} --skip-duplicate`,
-            pushOutput = this._executeCommand(pushCmd, { encoding: "utf-8" }).stdout
+//             pushOutput = this._executeCommand(pushCmd, { encoding: "utf-8" }).stdout
+            pushOutput = this._executeCommandNoOps(pushCmd).stdout
 
         console.log(pushOutput)
 
