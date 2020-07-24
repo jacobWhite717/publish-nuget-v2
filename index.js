@@ -66,14 +66,14 @@ class Action {
         
         var packageLoc = process.cwd() + "/" + packages[0]
         console.log(packageLoc)
-        process.chdir("../")
+//         process.chdir("..")
         
 //         const pushCmd = `nuget push *.nupkg --source ${this.nugetSource} -k ${this.nugetKey} --skip-duplicate`,
-        const pushCmd = `dotnet nuget push ${packageLoc} --source "github" --skip-duplicate`,
+        const pushCmd = `nuget push ${packageLoc} -s ${this.nugetSource} -k ${this.nugetKey} --skip-duplicate`,
+//         const pushCmd = `dotnet nuget push ${packageLoc} --source "github" --skip-duplicate`,
             pushOutput = this._executeCommand(pushCmd, { encoding: "utf-8" }).stdout
 
         console.log(pushOutput)
-        console.log('Current directory: ' + process.cwd());
 
         if (/error/.test(pushOutput))
             this._printErrorAndExit(`${/error.*/.exec(pushOutput)[0]}`)
