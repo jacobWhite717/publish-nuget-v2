@@ -65,7 +65,7 @@ class Action {
         console.log(`Generated Package(s): ${packages.join(", ")}`)
         
 //         const pushCmd = `nuget push *.nupkg --source ${this.nugetSource} -k ${this.nugetKey} --skip-duplicate`,
-        const pushCmd = `dotnet nuget push ${packages[0]} --source ${this.nugetSource} -k ${this.nugetKey} --skip-duplicate`,
+        const pushCmd = `dotnet nuget push ${packages[0]} --source "github" --skip-duplicate`,
             pushOutput = this._executeCommand(pushCmd, { encoding: "utf-8" }).stdout
 
         console.log(pushOutput)
