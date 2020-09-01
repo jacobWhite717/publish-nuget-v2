@@ -80,7 +80,7 @@ class Action {
         
         console.log(temp1Out)
         
-        const sourceCmd = `dotnet nuget add source "${this.nugetSource}" --name "github" --username jacobWhite717 --password ${this.nugetKey}`,
+        const sourceCmd = `dotnet nuget add source "${this.nugetSource}" --name "github" --username jacobWhite717 --password ${this.nugetKey} --store-password-in-clear-text`,
               sourceOutput = this._executeCommand(sourceCmd, { encoding: "utf-8" }).stdout
         
         console.log(sourceOutput)
