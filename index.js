@@ -78,11 +78,17 @@ class Action {
         const temp1 = `dotnet nuget list source`,
             temp1Out = this._executeCommand(temp1, { encoding: "utf-8" }).stdout
         
+        console.log(temp1Out)
+        
         const sourceCmd = `dotnet nuget add source "${this.nugetSource}" --name "github" --username jacobWhite717 --password ${this.nugetKey}`,
               sourceOutput = this._executeCommand(sourceCmd, { encoding: "utf-8" }).stdout
         
+        console.log(sourceOutput)
+        
         const temp2 = `dotnet nuget list source`,
             temp2Out = this._executeCommand(temp2, { encoding: "utf-8" }).stdout
+        
+        console.log(temp2Out)
                 
 //         const pushCmd = `nuget push *.nupkg --source ${this.nugetSource} -k ${this.nugetKey} --skip-duplicate`,
 //         const pushCmd = `dotnet nuget push ${packageLoc} -s ${this.nugetSource} -k ${this.nugetKey} --skip-duplicate`,
