@@ -76,7 +76,7 @@ class Action {
         console.log(path.resolve(packages[0]))
         
         const sourceCmd = `dotnet nuget source Add -Name "pkgSource" -Source "${this.nugetSource}" -UserName c-core-labs -Password ${this.nugetKey}`,
-              sourceOutput = this.executeCommand(sourceCmd, { encoding: "utf-8" }).stdout
+              sourceOutput = this._executeCommand(sourceCmd, { encoding: "utf-8" }).stdout
         
 //         const pushCmd = `nuget push *.nupkg --source ${this.nugetSource} -k ${this.nugetKey} --skip-duplicate`,
 //         const pushCmd = `dotnet nuget push ${packageLoc} -s ${this.nugetSource} -k ${this.nugetKey} --skip-duplicate`,
