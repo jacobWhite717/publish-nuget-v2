@@ -80,7 +80,7 @@ class Action {
         
 //         const pushCmd = `nuget push *.nupkg --source ${this.nugetSource} -k ${this.nugetKey} --skip-duplicate`,
 //         const pushCmd = `dotnet nuget push ${packageLoc} -s ${this.nugetSource} -k ${this.nugetKey} --skip-duplicate`,
-        const pushCmd = `dotnet nuget push ${packageLoc} -Source "pkgSource"`,   
+        const pushCmd = `dotnet nuget push ${packageLoc} --source "pkgSource"`,   
             pushOutput = this._executeCommand(pushCmd, { encoding: "utf-8" }).stdout
 
         console.log(pushOutput)
